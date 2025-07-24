@@ -90,6 +90,11 @@ jobs:
         echo '  <remote name="orangefox" fetch="https://gitlab.com/OrangeFox/" />' >> ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST_BRANCH }}/.repo/local_manifests/fox.xml
         echo '  <project name="vendor/recovery" path="vendor/recovery" remote="orangefox" revision="fox_12.1" />' >> ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST_BRANCH }}/.repo/local_manifests/fox.xml
         echo '</manifest>' >> ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST_BRANCH }}/.repo/local_manifests/fox.xml
+
+    - name: Re-sync manifest after patch
+      run: |
+        cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
+        repo sync vendor/recovery
         
     - name: Clone OrangeFox vendor/recovery
       run: |
