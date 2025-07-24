@@ -95,12 +95,6 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
         repo sync vendor/recovery
-        
-    - name: Clone OrangeFox vendor/recovery
-      run: |
-        cd ${GITHUB_WORKSPACE}/OrangeFox/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
-        rm -rf vendor/recovery
-        git clone https://gitlab.com/OrangeFox/vendor/recovery.git -b fox_12.1 vendor/recovery
 
     - name: Clone Device Tree
       run: |
